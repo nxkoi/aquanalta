@@ -6,7 +6,8 @@ services:
       - "6379:6379"
 
   mar:
-    build: ./api-mar
+    build:
+      context: ./api-mar
     ports:
       - "8000:8000"
     environment:
@@ -15,7 +16,8 @@ services:
       - redis
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
     ports:
       - "3000:80"
     depends_on:
