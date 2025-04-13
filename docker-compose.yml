@@ -1,15 +1,22 @@
-version: "3.9"
+version: '3'
 services:
   redis:
-    image: redis:7
+    image: redis
     ports:
       - "6379:6379"
 
   mar:
-    build: .
+    build: ./api-mar
     ports:
       - "8000:8000"
     environment:
       - REDIS_HOST=redis
     depends_on:
       - redis
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - mar
